@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Préstamos{% endblock %}
+
+{% block content %}
+    <h1>Solicitudes de Préstamos</h1>
+    <ul>
+        {% for prestamo in prestamos %}
+            <li>Cliente: {{ prestamo.cliente }} - Monto solicitado: {{ prestamo.monto }} - Estado: {{ prestamo.estado }}</li>
+        {% empty %}
+            <li>No hay solicitudes de préstamos registradas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

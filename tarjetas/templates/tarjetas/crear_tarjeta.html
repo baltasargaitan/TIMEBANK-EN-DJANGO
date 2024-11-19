@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Crear Tarjeta{% endblock %}
+
+{% block content %}
+    <h1>Crear Tarjeta</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Tarjeta</button>
+    </form>
+
+    <a href="{% url 'tarjetas' %}">Volver a la lista de tarjetas</a>
+{% endblock %}

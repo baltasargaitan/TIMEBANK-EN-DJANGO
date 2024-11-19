@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}TimeBank{% endblock %}</title>
+</head>
+<body<header>
+    <ul>
+        {% if user.is_authenticated %}
+            <li>Bienvenido {{ user.first_name }} {{ user.last_name }}</li>
+            <li><a href="{% url 'login:logout' %}">Cerrar sesión</a></li>
+        {% else %}
+            <li><a href="{% url 'login:login' %}">Iniciar sesión</a></li>
+            <li><a href="{% url 'login:registro' %}">Registrarse</a></li>
+        {% endif %}
+    </ul>
+</header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 TimeBank. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

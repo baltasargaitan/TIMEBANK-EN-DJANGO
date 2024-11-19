@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Tarjetas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Tarjetas</h1>
+    <ul>
+        {% for tarjeta in tarjetas %}
+            <li>{{ tarjeta.numero }} - Tipo: {{ tarjeta.tipo }} - Cliente: {{ tarjeta.cliente }}</li>
+        {% empty %}
+            <li>No hay tarjetas registradas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

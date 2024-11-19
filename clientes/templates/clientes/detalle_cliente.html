@@ -1,0 +1,15 @@
+<!-- templates/clientes/detalle_cliente.html -->
+{% extends "base/base.html" %}
+
+{% block title %}Detalle de {{ cliente.nombre }}{% endblock %}
+
+{% block content %}
+<h1>Detalle de Cliente</h1>
+<p><strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellido }}</p>
+<p><strong>DNI:</strong> {{ cliente.dni }}</p>
+<p><strong>Email:</strong> {{ cliente.email }}</p>
+<p><strong>Fecha de Nacimiento:</strong> {{ cliente.fecha_nacimiento }}</p>
+<p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+
+<a href="{% url 'clientes:listar_clientes' %}">Volver a la lista de clientes</a>
+{% endblock %}
