@@ -1,65 +1,28 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Registro - TimeBank{% endblock %}
+{% block title %}Registrarse - TimeBank{% endblock %}
 
 {% block content %}
 <div class="container">
     <h1>Registrarse</h1>
-    <p>Complete el siguiente formulario para crear una cuenta.</p>
-
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
             <label for="id_username">Nombre de Usuario</label>
             {{ form.username }}
-            {% if form.username.errors %}
-                <ul class="errors">
-                    {% for error in form.username.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
-
-        <div class="form-group">
-            <label for="id_email">Correo Electrónico</label>
-            {{ form.email }}
-            {% if form.email.errors %}
-                <ul class="errors">
-                    {% for error in form.email.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
         </div>
 
         <div class="form-group">
             <label for="id_password1">Contraseña</label>
             {{ form.password1 }}
-            {% if form.password1.errors %}
-                <ul class="errors">
-                    {% for error in form.password1.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
         </div>
 
         <div class="form-group">
             <label for="id_password2">Confirmar Contraseña</label>
             {{ form.password2 }}
-            {% if form.password2.errors %}
-                <ul class="errors">
-                    {% for error in form.password2.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
         </div>
 
         <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>
-
-    <p>¿Ya tienes cuenta? <a href="{% url 'login:login' %}">Inicia sesión aquí</a>.</p>
 </div>
 {% endblock %}

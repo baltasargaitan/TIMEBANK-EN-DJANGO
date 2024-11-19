@@ -1,32 +1,32 @@
-
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
 
-from .forms import RegistroForm
-
-def registro(request):
-    if request.method == "POST":
-        form = RegistroForm(request.POST)
+def registro_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Iniciar sesión automáticamente después de registrarse
-            return redirect("homebanking:index")  # Redirigir al homebanking
+            auth_login(request, user)  # Inicia sesión automáticamente después de registrar
+            return redirect('/homebanking')  # Redirige a la página de inicio
     else:
-        form = RegistroForm()
-
-    return render(request, "login/registro.html", {"form": form})
+        form = UserCreationForm()
+    return render(request, 'login/registro.html', {'form': form})
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            return redirect('/homebanking')  # Redirige a la principal
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()  # Obtén el usuario de las credenciales
+            auth_login(request, user)  # Inicia sesión al usuario
+            return redirect('/homebanking')  # Redirige a la página principal
         else:
-            return render(request, 'login/login.html', {'error': 'Credenciales inválidas'})
-    return render(request, 'login/login.html')
+            return render(request, 'login/login.html', {'form': form, 'error': 'Credenciales inválidas'})
+    else:
+        form = AuthenticationForm()
 
+    return render(request, 'login/login.html', {'form': form})
 def logout_view(request):
-    logout(request)
-    return redirect('login:login')
+    logout(request)  # Cierra la sesión del usuario
+    return redirect('login:login')  # Redirige al login
