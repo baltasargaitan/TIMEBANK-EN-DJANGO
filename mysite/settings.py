@@ -111,13 +111,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LOGIN_URL = 'login:login'  # Esto asegura que los usuarios no autenticados vayan a la página de login
 
 
 # Static files (CSS, JavaScript, Images)

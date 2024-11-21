@@ -17,9 +17,11 @@ Including another URLconf
     ACA ESTAN LAS URLS GLOBALES DEL PROYECTO
 """
 from django.contrib import admin
+from django.http import HttpResponseRedirect
 from django.urls import include,path
 
 urlpatterns = [
+    path('', lambda request: HttpResponseRedirect('/login/')),
     path("homebanking/",include('homebanking.urls')),
     path('clientes/', include('clientes.urls')),
     path('cuentas/', include('cuentas.urls')),

@@ -1,14 +1,37 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Tarjetas{% endblock %}
+{% block title %}Lista de Tarjetas{% endblock %}
 
 {% block content %}
     <h1>Lista de Tarjetas</h1>
+
+    <a href="{% url 'tarjetas:crear_tarjeta' %}">Crear nueva tarjeta</a> 
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <ul>
         {% for tarjeta in tarjetas %}
-            <li>{{ tarjeta.numero }} - Tipo: {{ tarjeta.tipo }} - Cliente: {{ tarjeta.cliente }}</li>
+            <li>
+                {{ tarjeta.numero }} - Tipo: {{ tarjeta.tipo }} - Cliente: {{ tarjeta.cliente }}
+                <!-- Botón para ver detalles de la tarjeta -->
+                <a href="{% url 'tarjetas:detalle_tarjeta' tarjeta.id %}">Ver detalles</a>
+                <!-- Botón para eliminar tarjeta -->
+
+            </li>
         {% empty %}
             <li>No hay tarjetas registradas.</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'homebanking:homebanking' %}">
+        <button>Volver atras</button>
+    </a>
+
 {% endblock %}

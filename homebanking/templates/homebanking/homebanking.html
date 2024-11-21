@@ -6,12 +6,11 @@
     <h1>TimeBank</h1>
     <nav>
         <ul>
-
-            <li><a href="{% url 'login:logout' %}">Logout</a></li>
             <li><a href="{% url 'clientes:listar_clientes' %}">Clientes</a></li>
             <li><a href="{% url 'listar_cuentas' %}">Cuentas</a></li>
-            <li><a href="{% url 'listar_tarjetas' %}">Tarjetas</a></li>          
+            <li><a href="{% url 'tarjetas:listar_tarjetas' %}">Tarjetas</a></li>          
             <li><a href="{% url 'listar_movimientos' %}">Movimientos</a></li>
+            <li><a href="{% url 'listar_prestamos' %}">Prestamos</a></li>
         </ul>
     </nav>
 {% endblock %}
