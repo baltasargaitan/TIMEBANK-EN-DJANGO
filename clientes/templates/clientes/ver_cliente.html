@@ -1,4 +1,4 @@
-<!-- templates/clientes/detalle_cliente.html -->
+
 {% extends "base/base.html" %}
 
 {% block title %}Detalle de {{ cliente.nombre }}{% endblock %}
@@ -11,5 +11,6 @@
 <p><strong>Fecha de Nacimiento:</strong> {{ cliente.fecha_nacimiento }}</p>
 <p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
 
-<a href="{% url 'clientes:listar_clientes' %}">Volver a la lista de clientes</a>
+<a href="{% url 'homebanking:homebanking' %}">Volver atrás</a>
+<a href="{% url 'clientes:completar_perfil' %}">Completar perfil</a>
 {% endblock %}

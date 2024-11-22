@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Detalle Transferencia{% endblock %}
+
+
+{% block content %}
+
+<h1>Detalles de la Transferencia</h1>
+
+    <p><strong>Cuenta de Origen:</strong> {{ transferencia.origen.cliente.nombre }}</p>
+    <p><strong>Cuenta de Destino:</strong> {{ transferencia.destino.cliente.nombre }}</p>
+    <p><strong>Monto Transferido:</strong> ${{ transferencia.monto }}</p>
+    <p><strong>Estado:</strong> {{ transferencia.estado|capfirst }}</p>
+    <p><strong>Fecha de Transferencia:</strong> {{ transferencia.fecha }}</p>
+
+    <br>
+    <a href="{% url 'transferencias:crear_transferencia' %}">Realizar otra transferencia</a>
+{% endblock %}

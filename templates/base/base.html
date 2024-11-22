@@ -6,8 +6,9 @@
 </head>
 <body<header>
     <ul>
+
         {% if user.is_authenticated %}
-            <li>Bienvenido {{ user.username }} {{ user.last_name }}</li>
+            <li>Hola  {{ user.username }}!</li>
             <li><a href="{% url 'login:logout' %}">Cerrar sesión</a></li>
         {% else %}
             <li><a href="{% url 'login:login' %}">Iniciar sesión</a></li>

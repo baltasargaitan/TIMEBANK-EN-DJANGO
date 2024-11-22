@@ -1,26 +1,24 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ClienteForm
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cliente
+from django.contrib.auth.decorators import login_required
+@login_required
 
-# Vista para listar los clientes
-def listar_clientes(request):
-    clientes = Cliente.objects.all()
-    return render(request, 'clientes/listar_clientes.html', {'clientes': clientes})
+def ver_cliente(request, cliente_id):
+    cliente = get_object_or_404(Cliente, id=cliente_id)
+    return render(request, 'clientes/ver_cliente.html', {'cliente': cliente})
+from .models import Cliente
+from .forms import ClienteForm  # Asegúrate de crear este formulario
 
-# Vista para crear un cliente
-def crear_cliente(request):
+
+def completar_perfil(request):
+    cliente = Cliente.objects.get(user=request.user)
+    
     if request.method == 'POST':
-        form = ClienteForm(request.POST)
+        form = ClienteForm(request.POST, instance=cliente)
         if form.is_valid():
             form.save()
-            return redirect('clientes:listar_clientes')  # Redirigir a la lista de clientes
+            return redirect('homebanking:homebanking')  # Redirigir a una página principal o dashboard
     else:
-        form = ClienteForm()
+        form = ClienteForm(instance=cliente)
 
-    return render(request, 'clientes/crear_cliente.html', {'form': form})
-
-
-
-def detalle_cliente(request, pk):
-    cliente = get_object_or_404(Cliente, pk=pk)
-    return render(request, 'clientes/detalle_cliente.html', {'cliente': cliente})
+    return render(request, 'clientes/completar_perfil.html', {'form': form})

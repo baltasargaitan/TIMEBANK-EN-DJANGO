@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Detalle Cuenta{% endblock %}
+
+{% block content %}
+<h1>Detalles de la Cuenta</h1>
+<p><strong>Saldo:</strong> {{ cuenta.saldo }}</p>
+<p><strong>Tipo de Cuenta:</strong> {{ cuenta.tipo }}</p>
+<p><strong>CVU:</strong> {{ cuenta.cvu }}</p>
+
+{% endblock %}

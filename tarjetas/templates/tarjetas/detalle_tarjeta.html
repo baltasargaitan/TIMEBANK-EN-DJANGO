@@ -7,14 +7,12 @@
     <p><strong>Número de Tarjeta:</strong> {{ tarjeta.numero }}</p>
     <p><strong>Tipo de Tarjeta:</strong> {{ tarjeta.tipo }}</p>
     <p><strong>Cliente Asociado:</strong> {{ tarjeta.cliente }}</p>
-    <p><strong>Estado:</strong> {{ tarjeta.estado }}</p>
-    <p><strong>Fecha de Emisión:</strong> {{ tarjeta.fecha_emision }}</p>
+    <p><strong>Fecha de Vencimiento:</strong> {{ tarjeta.fecha_vencimiento }}</p>
 
     <a href="{% url 'tarjetas:listar_tarjetas' %}">Volver a la lista de tarjetas</a>
 
-    <!-- Botón para eliminar la tarjeta -->
-<form method="POST" action="{% url 'tarjetas:eliminar_tarjeta' tarjeta.id %}">
-    {% csrf_token %}
-    <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarjeta?')">Eliminar tarjeta</button>
-</form>
+    <form method="POST" action="{% url 'tarjetas:eliminar_tarjeta' tarjeta.id %}">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarjeta?')">Eliminar tarjeta</button>
+    </form>
 {% endblock %}

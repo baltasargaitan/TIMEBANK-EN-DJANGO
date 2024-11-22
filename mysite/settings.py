@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'prestamos',
     'login',
     'homebanking',
+    'transferencias',
 
 ]
 

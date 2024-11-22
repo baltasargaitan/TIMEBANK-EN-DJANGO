@@ -1,0 +1,68 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Préstamos{% endblock %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>Solicitar Préstamo</h1>
+
+        <!-- Mostrar el mensaje de error personalizado si existe -->
+        {% if error %}
+            <div class="alert alert-danger">
+                <strong>Error:</strong> {{ error }}
+                
+            <a href="{% url 'prestamos:crear_prestamo' %}">Volver a solicitar</a>
+            </div>
+        {% endif %}
+
+        <!-- Mostrar errores generales del formulario -->
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Si no hay error, mostrar el formulario y el campo monto -->
+        {% if not error %}
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Campo para el monto -->
+            <div class="form-group">
+                <label for="id_monto">Monto del Préstamo:</label>
+                {{ form.monto }}
+                {% if form.monto.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.monto.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Otros campos del formulario -->
+            {% for field in form %}
+                {% if field.name != 'monto' %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            
+            <!-- Botones de acción -->
+            <button type="submit" class="btn btn-primary">Solicitar Préstamo</button>
+            <a href="{% url 'prestamos:listar_prestamos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+        {% endif %}
+    </div>
+</body>
+
+{% endblock %}

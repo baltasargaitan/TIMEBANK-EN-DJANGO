@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Crear Transferencia{% endblock %}
+
+{% block content %}
+<h1>Crear Transferencia</h1>
+
+{% if error %}
+  <div class="alert alert-danger">{{ error }}</div>  <!-- Estilo para el mensaje de error -->
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label for="origen">Cuenta de Origen:</label>
+    <select name="origen">
+        {% for cuenta in cuentas %}
+            <option value="{{ cuenta.id }}" {% if cuenta.id == origen_id %}selected{% endif %}>{{ cuenta }}</option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+    <label for="destino">Cuenta de Destino:</label>
+    <select name="destino">
+        {% for cuenta in cuentas_destino %}
+            <option value="{{ cuenta.id }}" {% if cuenta.id == destino_id %}selected{% endif %}>{{ cuenta.cliente.user }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="monto">Monto:</label>
+    <input type="number" name="monto" step="0.01" min="0" value="{{ monto }}" required>
+    
+    <button type="submit">Transferir</button>
+</form>
+
+<br>
+<a href="{% url 'homebanking:homebanking' %}">
+    <button>Volver atrás</button>
+</a>
+
+{% endblock %}

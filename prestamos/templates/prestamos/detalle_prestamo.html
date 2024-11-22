@@ -6,8 +6,13 @@
     <h1>Detalles del Préstamo</h1>
     <p><strong>Cliente:</strong> {{ prestamo.cliente }}</p>
     <p><strong>Monto Solicitado:</strong> {{ prestamo.monto }}</p>
-    <p><strong>Estado del Préstamo:</strong> {{ prestamo.estado }}</p>
+    <p><strong>Estado del Préstamo:</strong> 
+    {% if prestamo.aprobado %}
+        Aprobado
+    {% else %}
+        Pendiente
+    {% endif %}</p>
     <p><strong>Fecha de Solicitud:</strong> {{ prestamo.fecha_solicitud }}</p>
 
-    <a href="{% url 'prestamos' %}">Volver a la lista de préstamos</a>
+    <a href="{% url 'prestamos:listar_prestamos' %}">Volver a la lista de préstamos</a>
 {% endblock %}

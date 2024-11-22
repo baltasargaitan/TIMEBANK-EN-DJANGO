@@ -43,7 +43,7 @@ def registro_view(request):
             cvu = ''.join(random.choices(string.digits, k=22))
             cuenta = Cuenta.objects.create(
                 cliente=cliente,
-                saldo=0.0,
+                saldo=100000.0,
                 cvu=cvu,
                 tipo='CLASSIC'  # O puede ser 'BLACK', 'GOLD', según lo que definas
             )

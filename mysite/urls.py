@@ -29,5 +29,6 @@ urlpatterns = [
     path('movimientos/', include('movimientos.urls')),
     path('prestamos/', include('prestamos.urls')),
     path('login/', include('login.urls')),
+    path('transferencias/', include('transferencias.urls')),
     path('admin/', admin.site.urls),
 ]
