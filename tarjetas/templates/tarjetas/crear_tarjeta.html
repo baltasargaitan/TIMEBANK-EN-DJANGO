@@ -3,12 +3,19 @@
 {% block title %}Crear Tarjeta{% endblock %}
 
 {% block content %}
+<div class="form-container">
+
     <h1>Crear Tarjeta</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Crear Tarjeta</button>
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn-submit">Crear Tarjeta</button>
     </form>
-
-    <a href="{% url 'tarjetas:listar_tarjetas' %}">Volver a la lista de tarjetas</a>
+<br>
+    <a href="{% url 'tarjetas:listar_tarjetas' %}" class="btn-container">
+        <button type="button" class="btn-submit">Volver a la lista de tarjetas</button>
+    </a>
+</div>
 {% endblock %}

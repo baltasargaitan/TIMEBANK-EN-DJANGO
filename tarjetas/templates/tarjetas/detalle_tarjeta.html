@@ -3,16 +3,23 @@
 {% block title %}Detalle Tarjeta{% endblock %}
 
 {% block content %}
+<div class="detalle-container">
     <h1>Detalles de la Tarjeta</h1>
     <p><strong>Número de Tarjeta:</strong> {{ tarjeta.numero }}</p>
     <p><strong>Tipo de Tarjeta:</strong> {{ tarjeta.tipo }}</p>
     <p><strong>Cliente Asociado:</strong> {{ tarjeta.cliente }}</p>
     <p><strong>Fecha de Vencimiento:</strong> {{ tarjeta.fecha_vencimiento }}</p>
 
-    <a href="{% url 'tarjetas:listar_tarjetas' %}">Volver a la lista de tarjetas</a>
+    <a href="{% url 'tarjetas:listar_tarjetas' %}">
+        <button class="btn-submit">Volver a la lista de tarjetas</button>
+        </a>
+        <br><br>
+    <div class="form-group">
 
+ 
     <form method="POST" action="{% url 'tarjetas:eliminar_tarjeta' tarjeta.id %}">
         {% csrf_token %}
-        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarjeta?')">Eliminar tarjeta</button>
-    </form>
+        <button class="btn-delete" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarjeta?')">Eliminar tarjeta</button>
+    </form>   </div>
+</div>
 {% endblock %}

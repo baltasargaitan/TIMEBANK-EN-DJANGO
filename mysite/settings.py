@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'clientes',
     'cuentas',
     'tarjetas',
-    'movimientos',
     'prestamos',
     'login',
     'homebanking',
@@ -126,7 +125,11 @@ LOGIN_URL = 'login:login'  # Esto asegura que los usuarios no autenticados vayan
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Esto apunta a la carpeta static/
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

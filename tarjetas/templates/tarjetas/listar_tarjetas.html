@@ -3,9 +3,9 @@
 {% block title %}Lista de Tarjetas{% endblock %}
 
 {% block content %}
+<div class="detalle-container">
     <h1>Lista de Tarjetas</h1>
 
-    <a href="{% url 'tarjetas:crear_tarjeta' %}">Crear nueva tarjeta</a> 
 
     {% if messages %}
         <div class="messages">
@@ -30,8 +30,13 @@
             <li>No hay tarjetas registradas.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'homebanking:homebanking' %}">
-        <button>Volver atras</button>
-    </a>
 
+    <a href="{% url 'tarjetas:crear_tarjeta' %}">
+        <button class="btn-submit">Crear nueva tarjeta</button>
+    </a> 
+<br><br>
+    <a href="{% url 'homebanking:homebanking' %}">
+        <button class="btn-submit">Volver atras</button>
+    </a>
+</div>
 {% endblock %}

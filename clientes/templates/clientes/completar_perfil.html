@@ -3,11 +3,14 @@
 {% block title %}Crear Cliente{% endblock %}
 
 {% block content %}
-    <h1>Completa tu Perfil</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
-
+    <div class="form-container">
+        <h1>Completa tu Perfil</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn-submit">Guardar</button>
+        </form>
+    </div>
 {% endblock %}

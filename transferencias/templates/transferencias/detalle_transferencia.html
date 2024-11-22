@@ -2,17 +2,25 @@
 
 {% block title %}Detalle Transferencia{% endblock %}
 
-
 {% block content %}
+<div class="detalle-container">
+    <h1>Detalles de la Transferencia</h1>
 
-<h1>Detalles de la Transferencia</h1>
-
-    <p><strong>Cuenta de Origen:</strong> {{ transferencia.origen.cliente.nombre }}</p>
-    <p><strong>Cuenta de Destino:</strong> {{ transferencia.destino.cliente.nombre }}</p>
-    <p><strong>Monto Transferido:</strong> ${{ transferencia.monto }}</p>
-    <p><strong>Estado:</strong> {{ transferencia.estado|capfirst }}</p>
-    <p><strong>Fecha de Transferencia:</strong> {{ transferencia.fecha }}</p>
+    <div class="transfer-details">
+        <p><strong>Cuenta de Origen:</strong> {{ transferencia.origen.cliente.nombre }}</p>
+        <p><strong>Cuenta de Destino:</strong> {{ transferencia.destino.cliente.nombre }}</p>
+        <p><strong>Monto Transferido:</strong> ${{ transferencia.monto }}</p>
+        <p><strong>Estado:</strong> {{ transferencia.estado|capfirst }}</p>
+        <p><strong>Fecha de Transferencia:</strong> {{ transferencia.fecha }}</p>
+    </div>
 
     <br>
-    <a href="{% url 'transferencias:crear_transferencia' %}">Realizar otra transferencia</a>
+    <a href="{% url 'transferencias:crear_transferencia' %}">
+        <button class="btn-submit">Realizar otra transferencia</button>
+    </a>
+    <br><br>
+    <a href="{% url 'homebanking:homebanking' %}">
+        <button class="btn-submit">Volver atrás</button>
+    </a>
+</div>
 {% endblock %}

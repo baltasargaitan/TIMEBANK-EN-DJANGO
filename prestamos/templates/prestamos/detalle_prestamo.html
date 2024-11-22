@@ -3,16 +3,19 @@
 {% block title %}Detalle Préstamo{% endblock %}
 
 {% block content %}
+<div class="detalle-container">
     <h1>Detalles del Préstamo</h1>
     <p><strong>Cliente:</strong> {{ prestamo.cliente }}</p>
     <p><strong>Monto Solicitado:</strong> {{ prestamo.monto }}</p>
     <p><strong>Estado del Préstamo:</strong> 
-    {% if prestamo.aprobado %}
-        Aprobado
-    {% else %}
-        Pendiente
-    {% endif %}</p>
+        {% if prestamo.aprobado %}
+            Aprobado
+        {% else %}
+            Pendiente
+        {% endif %}</p>
     <p><strong>Fecha de Solicitud:</strong> {{ prestamo.fecha_solicitud }}</p>
 
-    <a href="{% url 'prestamos:listar_prestamos' %}">Volver a la lista de préstamos</a>
-{% endblock %}
+    <a href="{% url 'prestamos:listar_prestamos' %}">
+    <button class="btn-submit">Volver a la lista de prestamos</button></a>
+    </div>
+    {% endblock %}

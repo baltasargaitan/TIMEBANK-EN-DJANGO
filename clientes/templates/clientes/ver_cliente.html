@@ -1,16 +1,24 @@
-
 {% extends "base/base.html" %}
 
 {% block title %}Detalle de {{ cliente.nombre }}{% endblock %}
 
 {% block content %}
-<h1>Detalle de Cliente</h1>
-<p><strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellido }}</p>
-<p><strong>DNI:</strong> {{ cliente.dni }}</p>
-<p><strong>Email:</strong> {{ cliente.email }}</p>
-<p><strong>Fecha de Nacimiento:</strong> {{ cliente.fecha_nacimiento }}</p>
-<p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+<div class="detalle-container">
+    <h1>Detalle de Cliente</h1>
+    <p><strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellido }}</p>
+    <p><strong>DNI:</strong> {{ cliente.dni }}</p>
+    <p><strong>Email:</strong> {{ cliente.email }}</p>
+    <p><strong>Fecha de Nacimiento:</strong> {{ cliente.fecha_nacimiento }}</p>
+    <p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
 
-<a href="{% url 'homebanking:homebanking' %}">Volver atrás</a>
-<a href="{% url 'clientes:completar_perfil' %}">Completar perfil</a>
+
+    <a href="{% url 'homebanking:homebanking' %}">
+        <button class="btn-submit">Volver atrás</button>
+    </a>
+    <br><br>
+    <a href="{% url 'clientes:completar_perfil' %}">
+        <button class="btn-submit">Completar el perfil</button>
+    </a>
+</div>
+
 {% endblock %}

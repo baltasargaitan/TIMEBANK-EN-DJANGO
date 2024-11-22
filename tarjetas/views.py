@@ -19,9 +19,9 @@ def crear_tarjeta(request):
         form = TarjetaForm(request.POST)
         if form.is_valid():
             tarjeta = form.save(commit=False)
-            tarjeta.cliente = request.user  # Asociar la tarjeta al usuario autenticado
+            tarjeta.cliente = request.user 
             tarjeta.save()
-            return redirect('tarjetas:listar_tarjetas')  # Redirige a la lista de tarjetas del usuario
+            return redirect('tarjetas:listar_tarjetas') 
     else:
         form = TarjetaForm()
     

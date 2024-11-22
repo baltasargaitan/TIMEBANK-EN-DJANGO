@@ -27,7 +27,6 @@ def registro_view(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)  # Inicia sesión automáticamente después de registrar
-            
             # Crear el cliente relacionado al usuario
             cliente = Cliente.objects.create(
                 user=user,
@@ -52,6 +51,9 @@ def registro_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'login/registro.html', {'form': form})
+
+
+
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)

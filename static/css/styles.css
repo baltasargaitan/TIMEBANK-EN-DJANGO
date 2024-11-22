@@ -1,22 +1,352 @@
+/* General */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #e3b4ce, #8f94fb);
+    color: rgb(0, 0, 0);
     margin: 0;
     padding: 0;
-    background-color: violet;
-}
-nav ul {
-    list-style: none;
     display: flex;
-    background-color: #333;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+}
+
+/* Contenedor Principal */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    margin-top: 9rem;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+    max-height: 100rem;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título */
+.login-title {
+    font-size: 2rem;
+    color: #4e54c8;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Formulario */
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Campos del formulario */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #4e54c8;
+    box-shadow: 0 0 8px rgba(78, 84, 200, 0.5);
+    outline: none;
+}
+.btn-container {
+    gap: 1rem;
+}
+/* Botón */
+.btn-submit {
+    padding: 0.4rem;
+    border: none;
+    background: #4e54c8;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    flex: 1 1 auto;  /* Asegura que los botones ocupen solo el espacio necesario */
+}
+.btn-delete {
+    padding: 0.4rem;
+    border: none;
+    margin-bottom: 0;
+    background: #952222;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    flex: 1 1 auto;  /* Asegura que los botones ocupen solo el espacio necesario */
+}
+
+.btn-submit:hover {
+    background: #3d42a7;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff4d4d;
+    background: #ffe6e6;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
+    animation: shake 0.5s ease;
+}
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(to bottom right, #e387ba, #8f94fb);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; }
+.site-header a {
+    color: white;}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+}
+
+/* Navigation Styles */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    margin: 0;
-    padding: 10px 15px;
+.nav-links li {
+    font-size: 1rem;
+    text-decoration: wavy;
 }
 
-nav ul li a {
+.nav-links a {
+    color: #ffffff;
+
     text-decoration: none;
-    color: white;
+    transition: color 0.3s ease;
 }
+
+.nav-links a:hover {
+    color: #d1d1e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Animación de error */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25%, 75% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+}
+footer{
+
+    text-align: center;
+    position: fixed;
+    bottom:0px;
+    color: #fff;
+    text-align: center;
+    padding: 0rem;
+    margin-bottom: 0;
+    margin-top: auto; /* Empuja el footer al final */
+}
+/* Campos del formulario */
+.form-group {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+/* Campos de entrada de texto y select */
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #4e54c8;
+    box-shadow: 0 0 8px rgba(78, 84, 200, 0.5);
+    outline: none;
+}
+
+/* Estilo para los botones */
+
+
+
+/* Estilo para los mensajes de error */
+.error-message {
+    color: #ff4d4d;
+    background: #ffe6e6;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
+    animation: shake 0.5s ease;
+}
+
+
+.detalle-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-align: left;
+    animation: fadeIn 1s ease-in-out;} 
+
+.cuenta_list {
+    padding: 0;
+    margin: 0;
+}
+.cuentas-list li {
+    font-size: 1.1rem;
+    color: #840000;
+    margin-bottom: 1rem;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+.detalle-container ul{
+    list-style: none;
+    text-align: left; 
+    align-items: right;
+    align-content: right;}
+    
+    /* Centra los elementos dentro del contenedor */
+h1 {
+    font-size: 2rem;
+    color: #4e54c8;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.transfer-details p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+strong {
+    color: #4e54c8;  /* Color consistente con el resto de la interfaz */
+}
+
+/* Estilo para el contenedor del formulario */
+.form-container {
+    width: 100%;
+    max-width: 400px;  /* Limita el ancho del formulario */
+    margin: 2rem auto; /* Centra el formulario horizontalmente */
+    padding: 2rem;
+    margin-top: 8rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    animation: fadeIn 1s ease-in-out; /* Centra el título y otros elementos dentro del formulario */
+}
+
+/* Título del formulario */
+.form-container h1 {
+    font-size: 2rem;
+    color: #4e54c8;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo para los campos de formulario */
+.form-container .form-group {
+    font-size: 0.8rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo para los campos de entrada */
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Enfoque de los campos de entrada */
+.form-container input:focus,
+.form-container select:focus {
+    border-color: #4e54c8;
+    box-shadow: 0 0 8px rgba(78, 84, 200, 0.5);
+    outline: none;
+}
+
+

@@ -21,9 +21,5 @@ class PrestamoForm(forms.ModelForm):
         monto = self.cleaned_data.get('monto')
         cuenta = self.cleaned_data.get('cuenta')
         
-        # Verifica si el saldo de la cuenta es suficiente
-        if cuenta and monto > cuenta.saldo:
-            raise forms.ValidationError('Saldo insuficiente para este préstamo.')
-
         return monto
 

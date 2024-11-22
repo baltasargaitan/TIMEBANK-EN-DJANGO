@@ -3,19 +3,36 @@
 {% block title %}Préstamos{% endblock %}
 
 {% block content %}
+<div class="detalle-container">
     <h1>Solicitudes de Préstamos</h1>
-    <ul>
+    
+    <!-- Lista de préstamos -->
+    <ul class="list-group">
         {% for prestamo in prestamos %}
-            <li>Cliente: {{ prestamo.cliente }} - Monto solicitado: {{ prestamo.monto }} - Estado:{% if prestamo.aprobado %}
-                Aprobado
-            {% else %}
-                Pendiente
-            {% endif %}</li>
+            <li class="list-group-item">
+                <strong>Cliente:</strong> {{ prestamo.cliente }} <br>
+                <strong>Monto solicitado:</strong> {{ prestamo.monto }} <br>
+                <strong>Estado:</strong> 
+                {% if prestamo.aprobado %}
+                    <span class="badge bg-success">Aprobado</span>
+                {% else %}
+                    <span class="badge bg-warning">Pendiente</span>
+                {% endif %}
+            </li>
         {% empty %}
-            <li>No hay solicitudes de préstamos registradas.</li>
+            <li class="list-group-item">No hay solicitudes de préstamos registradas.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'homebanking:homebanking' %}">Volver atrás</a>
-    <a href="{% url 'prestamos:crear_prestamo' %}">
-        <button>Solicitar prestamo</button> </a>
+
+    <div >
+        <a href="{% url 'prestamos:crear_prestamo' %}" >
+            <button class="btn-submit">Solicitar préstamo</button></a>
+          <br><br>
+        <a href="{% url 'homebanking:homebanking' %}">
+            <button class="btn-submit">Volver atrás</button>
+            </a>
+       
+
+    </div>
+</div>
 {% endblock %}

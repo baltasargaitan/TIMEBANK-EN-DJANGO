@@ -3,16 +3,23 @@
 {% block title %}Cuentas{% endblock %}
 
 {% block content %}
+<div class="detalle-container">
     <h1>Cuentas Asociadas</h1>
-    <ul>
+    
+    <ul class="cuentas-list">
         {% for cuenta in cuentas %}
-            <li>Titular: {{cuenta.cliente.nombre}} {{cuenta.cliente.apellido}} </li>
-            <li>Tipo de cuenta: {{ cuenta.tipo }} </li>
-            <li>Saldo: {{ cuenta.saldo }}</li>
-            <li>CVU: {{ cuenta.cvu }}</li>
+            <li><strong>Titular:</strong> {{cuenta.cliente.nombre}} {{cuenta.cliente.apellido}}</li>
+            <li><strong>Tipo de cuenta:</strong> {{ cuenta.tipo }}</li>
+            <li><strong>Saldo:</strong> {{ cuenta.saldo }}</li>
+            <li><strong>CVU:</strong> {{ cuenta.cvu }}</li>
         {% empty %}
             <li>No hay cuentas registradas.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'homebanking:homebanking' %}">Volver atrás</a>
+    
+    <a href="{% url 'homebanking:homebanking' %}">
+        <button class="btn-submit">Volver atrás</button>
+    </a>
+</div>
+    
 {% endblock %}

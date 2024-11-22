@@ -3,15 +3,16 @@
 {% block title %}Homebanking{% endblock %}
 
 {% block content %}
-    <h1>TimeBank</h1>
-    <nav>
-        <ul>
-            <li><a href="{% url 'clientes:ver_cliente' cliente_id=cliente.id %}">Ver Cliente</a></li>
-            <li><a href="{% url 'listar_cuentas' %}">Cuentas</a></li>
-            <li><a href="{% url 'tarjetas:listar_tarjetas' %}">Tarjetas</a></li>          
-            <li><a href="{% url 'listar_movimientos' %}">Movimientos</a></li>
-            <li><a href="{% url 'prestamos:listar_prestamos' %}">Prestamos</a></li>
-            <li><a href="{% url 'transferencias:crear_transferencia' %}">Transferir</a></li>
-        </ul>
-    </nav>
+    <div class="login-container">
+        <h1 class="login-title">Bienvenido a TimeBank</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="{% url 'clientes:ver_cliente' cliente_id=cliente.id %}">Ver Cliente</a></li>
+                <li><a href="{% url 'listar_cuentas' %}">Cuentas</a></li>
+                <li><a href="{% url 'tarjetas:listar_tarjetas' %}">Tarjetas</a></li>          
+                <li><a href="{% url 'prestamos:listar_prestamos' %}">Préstamos</a></li>
+                <li><a href="{% url 'transferencias:crear_transferencia' %}">Transferir</a></li>
+            </ul>
+        </nav>
+    </div>
 {% endblock %}
