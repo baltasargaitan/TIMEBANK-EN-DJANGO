@@ -14,10 +14,12 @@
                 <h1 class="site-title">TimeBank</h1>
             </div>
             <nav>
-                <ul class="nav-links">
+                <ul class="nav-links1">
                     {% if user.is_authenticated %}
                         <li>Hola, {{ user.username }} !</li>
-                        <li><a href="{% url 'login:logout' %}">Cerrar sesión</a></li>
+                        <li><a href="{% url 'login:logout' %}">
+                        <button class="btn-submit1">Cerrar sesión</button></a></li>
+         
                     {% else %}
                         <li><a href="{% url 'login:login' %}">Iniciar sesión</a></li>
                         <li><a href="{% url 'login:registro' %}">Registrarse</a></li>

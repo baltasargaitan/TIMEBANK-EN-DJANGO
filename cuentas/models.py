@@ -13,7 +13,7 @@ class Cuenta(models.Model):
     cliente = models.OneToOneField(Cliente, on_delete=models.CASCADE)  # Relación uno a uno con Cliente
     saldo = models.DecimalField(max_digits=12, decimal_places=2, default=10000.00)  # Saldo inicial predeterminado
     cvu = models.CharField(max_length=22, unique=True, default=None)  # CVU único, generado automáticamente
-    tipo = models.CharField(max_length=10, choices=TIPO_CUENTA_CHOICES, default='CLASSIC')  # Tipo de cuenta predeterminado
+    tipo = models.CharField(max_length=10, choices=TIPO_CUENTA_CHOICES, default='GOLD')  # Tipo de cuenta predeterminado
 
     def save(self, *args, **kwargs):
         if not self.cvu:
