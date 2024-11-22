@@ -1,22 +1,22 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Préstamos{% endblock %}
+{% block title %}Solicitar Préstamo{% endblock %}
 
 {% block content %}
-<div class="detalle-container">
-    <h1>Solicitar Préstamo</h1>
+<div class="login-container"> <!-- Reutilizamos la clase de contenedor -->
+    <h1 class="login-title">Solicitar Préstamo</h1> <!-- Encabezado con estilo reutilizado -->
 
     <!-- Mostrar el mensaje de error personalizado si existe -->
     {% if error %}
-        <div class="alert alert-danger">
+        <div class="error-message">
             <strong>Error:</strong> {{ error }}
             <a href="{% url 'prestamos:crear_prestamo' %}">Volver a solicitar</a>
         </div>
     {% endif %}
 
- <!-- Mostrar errores generales del formulario -->
+    <!-- Mostrar errores generales del formulario -->
     {% if form.non_field_errors %}
-        <div class="alert alert-danger">
+        <div class="error-message">
             <ul>
                 {% for error in form.non_field_errors %}
                     <li>{{ error }}</li>
@@ -27,8 +27,7 @@
 
     <!-- Si no hay error, mostrar el formulario y el campo monto -->
     {% if not error %}
-    <div class="form-group">
-    <form method="post">
+    <form method="post" class="login-form"> <!-- Reutilizamos la clase de formulario -->
         {% csrf_token %}
 
         <!-- Campo para el monto -->
@@ -36,12 +35,12 @@
             <label for="id_monto">Monto del Préstamo:</label>
             {{ form.monto }}
             {% if form.monto.errors %}
-                <div class="alert alert-danger">
+                <div class="error-message">
                     {{ form.monto.errors }}
                 </div>
             {% endif %}
         </div>
-        <div class="form-group">
+
         <!-- Otros campos del formulario -->
         {% for field in form %}
             {% if field.name != 'monto' %}
@@ -49,25 +48,22 @@
                     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                     {{ field }}
                     {% if field.errors %}
-                        <div class="alert alert-danger">
+                        <div class="error-message">
                             {{ field.errors }}
                         </div>
                     {% endif %}
-                </div></div>
+                </div>
             {% endif %}
         {% endfor %}
 
         <!-- Botones de acción -->
         <button class="btn-submit">Solicitar Préstamo</button>
-        <br><br>
-
     </form>
-    
-    <a href="{% url 'prestamos:listar_prestamos' %}" class="btn btn-secondary">
-        <button class="btn-submit">Cancelar</button></a>
-</div>
+
+    <br>
+    <a href="{% url 'prestamos:listar_prestamos' %}">
+        <button class="btn-submit">Cancelar</button>
+    </a>
     {% endif %}
 </div>
-
 {% endblock %}
-

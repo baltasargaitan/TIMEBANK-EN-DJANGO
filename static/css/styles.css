@@ -190,8 +190,8 @@ body {
     background: linear-gradient(90deg, #4e54c8, #8f94fb);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase; /* Convierte el texto en mayúsculas */
-    letter-spacing: 2px; /* Espaciado entre letras */
+    text-transform: uppercase;
+    letter-spacing: 2px; 
 }
 
 /* Navigation Styles */
@@ -250,7 +250,7 @@ footer{
     text-align: center;
     padding: 0rem;
     margin-bottom: 0;
-    margin-top: auto; /* Empuja el footer al final */
+    margin-top: auto; 
 }
 /* Campos del formulario */
 .form-group {
@@ -274,8 +274,6 @@ footer{
     box-shadow: 0 0 8px rgba(78, 84, 200, 0.5);
     outline: none;
 }
-
-/* Estilo para los botones */
 
 
 
@@ -320,7 +318,7 @@ footer{
     align-items: right;
     align-content: right;}
     
-    /* Centra los elementos dentro del contenedor */
+/* Centra los elementos dentro del contenedor */
 h1 {
     font-size: 2rem;
     color: #4e54c8;

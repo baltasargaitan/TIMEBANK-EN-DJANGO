@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 import re
 
 def is_password_secure(password):
-    # Asegúrate de que la contraseña tenga al menos una mayúscula, un número y un mínimo de 8 caracteres
+    # Asegura de que la contraseña tenga al menos una mayúscula, un número y un mínimo de 8 caracteres
     if len(password) < 8:
         raise ValidationError("La contraseña debe tener al menos 8 caracteres.")
     if not re.search(r'\d', password):
@@ -26,7 +26,7 @@ def registro_view(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request, user)  # Inicia sesión automáticamente después de registrar
+            auth_login(request, user)  # Inicia sesión automáticamente después de registrar un nuevo usuario
             # Crear el cliente relacionado al usuario
             cliente = Cliente.objects.create(
                 user=user,
@@ -36,15 +36,13 @@ def registro_view(request):
                 telefono=request.POST['telefono'],
                 fecha_nacimiento=request.POST['fecha_nacimiento'],
             )
-            
-            # Crear una cuenta asociada al cliente recién creado
-            # Generar un CVU aleatorio para la cuenta (este es un ejemplo básico)
+            # Generar un CVU aleatorio para la cuenta muy buenaa
             cvu = ''.join(random.choices(string.digits, k=22))
             cuenta = Cuenta.objects.create(
                 cliente=cliente,
-                saldo=100000.0,
+                saldo=random.randint(100, 10 **9),
                 cvu=cvu,
-                tipo='CLASSIC'  # O puede ser 'BLACK', 'GOLD', según lo que definas
+                tipo=random.choice(['GOLD', 'CLASSIC', 'BLACK']),
             )
 
             return redirect('/homebanking')  # Redirige a la página de inicio
