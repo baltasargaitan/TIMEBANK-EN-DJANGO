@@ -7,11 +7,11 @@ def listar_cuentas(request):
     # Obtener la cuenta asociada al cliente logueado
     cuentas = Cuenta.objects.filter(cliente__user=request.user)
 
-    # Pasar las cuentas a la plantilla
+
     return render(request, 'cuentas/listar_cuentas.html', {'cuentas': cuentas})
 def crear_cuenta(request):
     if request.method == 'POST':
-        # Procesar creación de cuenta (puedes agregar un formulario aquí)
+
         pass
     return render(request, 'cuentas/crear_cuenta.html')
 from django.shortcuts import render, get_object_or_404
